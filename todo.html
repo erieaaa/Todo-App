@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+
+    <div class="app-container">
+     <header>
+    <h1>Task Manager</h1>
+    
+    <div class="header-controls">
+        <div class="sort-container">
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select">
+                <option value="manual">Manual (Drag & Drop)</option>
+                <option value="due-date-asc">Due Date (Soonest First)</option>
+                <option value="due-date-desc">Due Date (Latest First)</option>
+                <option value="title-asc">Title (A-Z)</option>
+            </select>
+        </div>
+        <button id="add-task-btn" class="btn-primary">
+            <span class="icon">&#43;</span> Add New Task
+        </button>
+    </div>
+</header>
+        <main>
+            <ul id="task-list">
+                <!-- Tasks will be rendered here by JavaScript -->
+            </ul>
+        </main>
+    </div>
+
+    <!-- The Modal for Adding/Editing Tasks -->
+    <div id="task-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+                <h2>Task Details</h2>
+
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input type="text" id="task-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-desc">Description</label>
+                    <textarea id="task-desc" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-due-date">Due Date</label>
+                    <input type="date" id="task-due-date">
+                </div>
+
+                <div class="form-group">
+                    <label>Sub-tasks</label>
+                    <div id="subtask-container">
+                        <ul id="subtask-list"></ul>
+                        <div class="subtask-input-group">
+                            <input type="text" id="subtask-input" placeholder="Add a new sub-task">
+                            <button type="button" id="add-subtask-btn">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancel-btn" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="todo.js" defer></script>
+</body>
+</html>
